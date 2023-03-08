@@ -64,21 +64,21 @@ export function lastFirst(basededatos) {
 
 
 export function subArray(array1, array2) {
-    const array3 = []
+    let array3 = []
     array2.forEach(element => {
         array3.push(array1[element])
     })
     return array3
 }
 
+//cambiar a filter()
 export function over21(array) {
     let adult = []
     array.forEach(element => {
         if (element.age > 20)
             adult.push(element)
-    });
+    })
     return adult
-
 }
 
 export function product(array) {
@@ -93,7 +93,6 @@ export function product(array) {
 export function getRepeats(array) {
 
     let resultado = []
-    let i
     for (let y = 0; y < array.length; y++) {
 
         let duplicado = false
@@ -125,7 +124,6 @@ export function aboveAverage(array) {
         }
     });
     let media = total / i
-    console.log(media)
 
     array.forEach(element => {
         if (element.score > media)
@@ -152,8 +150,6 @@ export function isPhraseAnagram(palabra, posibleAnagrama) {
     // Cambiar a minúsculas ambas cadenas
     palabra = palabra.toLowerCase();
     posibleAnagrama = posibleAnagrama.toLowerCase();
-    console.log(palabra)
-    console.log(posibleAnagrama)
 
     // Convertir ambas cadenas en un arreglo
     palabra = palabra.split("");
@@ -171,8 +167,6 @@ export function isPhraseAnagram(palabra, posibleAnagrama) {
     // Quitar espacios del principio
     palabra = palabra.trim();
     posibleAnagrama = posibleAnagrama.trim();
-    console.log(palabra)
-    console.log(posibleAnagrama)
 
     // Finalmente comparamos
 
@@ -205,6 +199,13 @@ export function longestWords(frase) {
     return mayor
 }
 
+export function moduleTitles() {
+
+    let array = Array.from(document.getElementsByClassName("module-title"))
+
+    return array.map((x) => { return x.innerHTML })
+}
+
 export function copycat(n) {
     if (n === 1)
         return 100
@@ -214,27 +215,15 @@ export function copycat(n) {
         return [1, 2, 3]
 }
 
-
-export function moduleTitles() {
-
-    let array = Array.from(document.getElementsByClassName("module-title"))
-
-    return array.map((x) => { return x.innerHTML })
-}
-
-
 export function goPurple() {
 
-    document.getElementsByClassName("passed")[0].style.border = "10px solid green"
+    let array = document.getElementsByClassName("passed").length
 
-    //let purple = passed.map((x) => { return x.className })
-
-    //console.log(purple)
-
-
-
+    for (let index = 0; index < array; index++) {
+        document.getElementsByClassName("passed")[index].style.cssText = "background-color: purple; color: white";
+        
+    }    
 
 
-
-    return 'Go Purple!'
+       return 'Go Purple!'
 }
