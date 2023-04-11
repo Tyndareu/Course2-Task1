@@ -11,7 +11,7 @@ export const ringArea = (x, y) => (y * y * Math.PI) - (x * x * Math.PI)
 
 export const f2c = (x) => (5 / 9) * (x - 32)
 
-export const c2f = (x) => x * 9 / 5 + 32
+export const c2f = (x) => (x * 9) / 5 + 32
 
 //Strings
 
@@ -55,8 +55,7 @@ export function lastFirst(basededatos) {
     } else if (basededatos.last) {
         return basededatos.last
 
-    }
-    else if (basededatos.first) {
+    } else if (basededatos.first) {
         return basededatos.first
 
     } else return ""
@@ -73,12 +72,7 @@ export function subArray(array1, array2) {
 
 //cambiar a filter()
 export function over21(array) {
-    let adult = []
-    array.forEach(element => {
-        if (element.age > 20)
-            adult.push(element)
-    })
-    return adult
+    return array.filter(element => element.age > 20)
 }
 
 export function product(array) {
@@ -90,9 +84,11 @@ export function product(array) {
 }
 
 
+
 export function getRepeats(array) {
 
     let resultado = []
+
     for (let y = 0; y < array.length; y++) {
 
         let duplicado = false
@@ -115,33 +111,25 @@ export function getRepeats(array) {
 
 export function aboveAverage(array) {
     let total = 0
-    let i = 0
-    let overmedia = []
     array.forEach(element => {
         if (element.score) {
             total += element.score
-            i++
         }
     });
-    let media = total / i
 
-    array.forEach(element => {
-        if (element.score > media)
-            overmedia.push(element)
+    let media = total / array.length
 
-    });
-    return overmedia
+    return array.filter(x => x.score > media)
 }
 
+
 export function reverseNumber(n) {
-    const number = n.toString().split("").reverse().join("");
-    return Number(number)
+
+    return Number(n.toString().split("").reverse().join(""))
 }
 
 export function isWordAnagram(word1, word2) {
-    let a = word1.toLowerCase().split("").sort().join("")
-    let b = word2.toLowerCase().split("").sort().join("")
-    if (a === b) return true
+    if (word1.toLowerCase().split("").sort().join("") === word2.toLowerCase().split("").sort().join("")) return true
     else return false
 }
 
@@ -154,7 +142,6 @@ export function isPhraseAnagram(palabra, posibleAnagrama) {
     // Convertir ambas cadenas en un arreglo
     palabra = palabra.split("");
     posibleAnagrama = posibleAnagrama.split("");
-
 
     // Ordenar ese arreglo
     palabra = palabra.sort();
@@ -184,26 +171,38 @@ export function longestWords(frase) {
     let valor = 0.1
     let mayor = []
 
-
     separacion.forEach(element => {
         if (element.length === valor) {
             mayor.push(element)
         }
 
-        if (element.length > valor) {
+        else if (element.length > valor) {
             valor = element.length
             mayor = [element]
         }
-
     })
     return mayor
 }
 
 export function moduleTitles() {
+    return Array.from(document.getElementsByClassName("module-title")).map((x) => { return x.innerHTML })
+}
 
-    let array = Array.from(document.getElementsByClassName("module-title"))
+export function goPurple() {
+    /*FOR
+    let n = document.getElementsByClassName("passed").length 
+    for (let index = 0; index < n; index++) {
+        document.getElementsByClassName("passed")[index].style.cssText = "background-color: purple; color: white";
+    }  */
 
-    return array.map((x) => { return x.innerHTML })
+    /*FOR EACH*/
+    let passed = Array.from(document.getElementsByClassName("passed"))
+
+    passed.forEach(element => {
+        element.style.cssText = "background-color: purple; color: white";
+    });
+
+    return 'Go Purple!'
 }
 
 export function copycat(n) {
@@ -215,15 +214,13 @@ export function copycat(n) {
         return [1, 2, 3]
 }
 
-export function goPurple() {
-
-    let array = document.getElementsByClassName("passed").length
-
-    for (let index = 0; index < array; index++) {
-        document.getElementsByClassName("passed")[index].style.cssText = "background-color: purple; color: white";
-        
-    }    
 
 
-       return 'Go Purple!'
-}
+
+
+
+
+
+
+
+
